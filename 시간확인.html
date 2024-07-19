@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+
+
+<h1>현재 날짜 확인</h1>
+<p id="nowDate"></p>
+<h1>현재 시간 확인</h1>
+<p id="nowHour"></p>
+
+
+<button id="button">시간 업데이트</button>
+<script>
+    
+  let nowHour=document.querySelector('#nowHour')
+          
+ let button=document.querySelector('#button')
+    button.addEventListener('click',()=>{
+    let today = new Date()
+    let nowYear = today.getFullYear()
+    let nowMonth = today.getMonth()
+    let nowDate = today.getDate()
+    let nowDay = today.getDay()
+    let nowHour = today.getHours()
+    let nowMinutes = today.getMinutes()
+    let nowSeconds = today.getSeconds()
+
+   let date = `${nowYear}년${nowMonth}월${nowDate}일`
+   let hour = `${nowHour}시${nowMinutes}분${nowSeconds}초`
+   let ND = document.querySelector('#nowDate')
+    ND.innerHTML=date
+    let NH = document.querySelector('#nowHour')
+    NH.innerHTML=hour
+})
+ 
+ 
+ 
+     </script>
+</body>
+</html>
