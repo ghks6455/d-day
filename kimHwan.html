@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+   *{ font-family: "Roboto Slab", serif;
+        font-optical-sizing: auto;
+        font-style: normal;}
+    body {background-image: url(img/plain-2390207_1920.jpg);}
+
+    
+</style>
+<body>
+    
+    <h2><p id="nowDate">오늘의 날짜는</p></h2>
+    <input type="date" name="" id="date"> <br>
+    <br>
+    <input type="text" id="bbq"  placeholder="할 일">
+    <p><button id="btn">계산!!!</button></p>
+    <h3><p id="D-day">D-Day 까지 얼마나 남았을까요?</p></h3>
+<script>
+  
+  let date = new Date()
+        let year = date.getFullYear()
+        let month = date.getMonth()+1
+        let day = date.getDate()
+        let nowDate = document.getElementById('nowDate')
+        let toDay = date.getDay()
+        
+        let grade ;
+        switch(toDay){
+            case 0:
+            grade = '일요일';
+            break;
+            case 1:
+            grade = '월요일';
+            break;
+            case 2:
+            grade = '화요일';
+            break;
+            case 3:
+            grade = '수요일';
+            break;
+            case 4:
+            grade = '목요일';
+            break;
+            case 5:
+            grade = '금요일';
+            break;
+            case 6:
+            grade = '토요일';
+            break;
+            
+        }
+
+        
+      console.log(toDay)  
+        nowDate.innerHTML = `${year}년 ${month}월 ${day}일 ${grade}`
+         
+  
+    
+  
+   // input태그 가져오기
+    let inputDate = document.getElementById('date')
+    // button태그 가져오기
+    let btn = document.getElementById('btn')
+    // 클릭 이벤트 발생
+    btn.addEventListener('click',()=>{
+        // input태그에서 선택 된 날짜 문자열을
+        // 날짜 객체로 변환
+        let selectedDate = inputDate.value;
+        // 날짜 타입 확인?
+        // console.log(selectedDate,typeof selectedDate)
+
+        let bbq = document.getElementById("bbq")
+        let sumDday  = bbq.value
+        console.log(sumDday)
+
+        let afterDate = new Date(selectedDate)
+        console.log(afterDate)
+        let curDate = new Date()
+        console.log(curDate)
+        // 밀리초
+        let diff = afterDate - curDate ;
+        console.log(diff)
+        // 소수점 반올림 기능 안에 밀리초인 diff를 일(day)로 변경하는 식을 넣어서 나온 값을 변수 remainDay에 대입?
+        let remainDay = Math.ceil( diff / (1000* 60*60*24));
+        console.log(remainDay)
+        // 소수점 반올림
+        // let newDate = Math.ceil(remainDay)
+        // console.log(newDate)
+        
+        // 변수 dDay에 D-day를 입력하는 태그의 id:'D-day'를 가져옴
+        let dDay = document.getElementById('D-day')
+        // 변수 dDay에 디데이를 알려주는 텍스트를 입력하며 값에 소수점을 자른 변수 remainDay를 넣음
+        dDay.innerHTML = `${sumDday} D-Day 까지 ${remainDay}일 남았습니다.`
+
+        alert(`정답은!!!`)
+
+
+
+    })
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
